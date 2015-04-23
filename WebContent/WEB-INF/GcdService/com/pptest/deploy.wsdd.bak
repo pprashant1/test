@@ -1,0 +1,107 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from GcdService WSDL service -->
+
+  <service name="Gcd" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://pptest.com"/>
+      <parameter name="wsdlServiceElement" value="GcdService"/>
+      <parameter name="schemaQualified" value="http://pptest.com"/>
+      <parameter name="wsdlServicePort" value="Gcd"/>
+      <parameter name="className" value="com.pptest.GcdSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="Gcd"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="gcd" qname="operNS:gcd" xmlns:operNS="http://pptest.com" returnQName="retNS:gcdReturn" xmlns:retNS="http://pptest.com" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="gcdList" qname="operNS:gcdList" xmlns:operNS="http://pptest.com" returnQName="retNS:gcdListReturn" xmlns:retNS="http://pptest.com" returnType="rtns:ArrayOf_xsd_anyType" xmlns:rtns="http://pptest.com" returnItemQName="tns:item" xmlns:tns="http://pptest.com" soapAction="" >
+      </operation>
+      <operation name="gcdCalc" qname="operNS:gcdCalc" xmlns:operNS="http://pptest.com" returnQName="retNS:gcdCalcReturn" xmlns:retNS="http://pptest.com" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:i1" xmlns:pns="http://pptest.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:i2" xmlns:pns="http://pptest.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="gcdSum" qname="operNS:gcdSum" xmlns:operNS="http://pptest.com" returnQName="retNS:gcdSumReturn" xmlns:retNS="http://pptest.com" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="gcdList gcdSum gcdCalc gcd"/>
+
+      <typeMapping
+        xmlns:ns="http://pptest.com"
+        qname="ns:>gcdCalcResponse"
+        type="java:com.pptest.GcdCalcResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pptest.com"
+        qname="ns:>gcdCalc"
+        type="java:com.pptest.GcdCalc"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pptest.com"
+        qname="ns:>gcd"
+        type="java:com.pptest.Gcd"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pptest.com"
+        qname="ns:>gcdSumResponse"
+        type="java:com.pptest.GcdSumResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pptest.com"
+        qname="ns:>gcdListResponse"
+        type="java:com.pptest.GcdListResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pptest.com"
+        qname="ns:>gcdList"
+        type="java:com.pptest.GcdList"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://pptest.com"
+        qname="ns:ArrayOf_xsd_anyType"
+        type="java:java.lang.Object[]"
+        innerType="cmp-ns:anyType" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pptest.com"
+        qname="ns:>gcdSum"
+        type="java:com.pptest.GcdSum"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pptest.com"
+        qname="ns:>gcdResponse"
+        type="java:com.pptest.GcdResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

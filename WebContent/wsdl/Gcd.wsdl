@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://pptest.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://pptest.com" xmlns:intf="http://pptest.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://pptest.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="gcd">
+    <complexType/>
+   </element>
+   <element name="gcdResponse">
+    <complexType>
+     <sequence>
+      <element name="gcdReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="gcdList">
+    <complexType/>
+   </element>
+   <element name="gcdListResponse">
+    <complexType>
+     <sequence>
+      <element name="gcdListReturn" type="impl:ArrayOf_xsd_anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_xsd_anyType">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+   <element name="gcdCalc">
+    <complexType>
+     <sequence>
+      <element name="i1" type="xsd:int"/>
+      <element name="i2" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="gcdCalcResponse">
+    <complexType>
+     <sequence>
+      <element name="gcdCalcReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="gcdSum">
+    <complexType/>
+   </element>
+   <element name="gcdSumResponse">
+    <complexType>
+     <sequence>
+      <element name="gcdSumReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="gcdRequest">
+
+      <wsdl:part element="impl:gcd" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="gcdSumRequest">
+
+      <wsdl:part element="impl:gcdSum" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="gcdCalcRequest">
+
+      <wsdl:part element="impl:gcdCalc" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="gcdListRequest">
+
+      <wsdl:part element="impl:gcdList" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="gcdCalcResponse">
+
+      <wsdl:part element="impl:gcdCalcResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="gcdListResponse">
+
+      <wsdl:part element="impl:gcdListResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="gcdResponse">
+
+      <wsdl:part element="impl:gcdResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="gcdSumResponse">
+
+      <wsdl:part element="impl:gcdSumResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Gcd">
+
+      <wsdl:operation name="gcd">
+
+         <wsdl:input message="impl:gcdRequest" name="gcdRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:gcdResponse" name="gcdResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="gcdList">
+
+         <wsdl:input message="impl:gcdListRequest" name="gcdListRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:gcdListResponse" name="gcdListResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="gcdCalc">
+
+         <wsdl:input message="impl:gcdCalcRequest" name="gcdCalcRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:gcdCalcResponse" name="gcdCalcResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="gcdSum">
+
+         <wsdl:input message="impl:gcdSumRequest" name="gcdSumRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:gcdSumResponse" name="gcdSumResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="GcdSoapBinding" type="impl:Gcd">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="gcd">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="gcdRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="gcdResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="gcdList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="gcdListRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="gcdListResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="gcdCalc">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="gcdCalcRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="gcdCalcResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="gcdSum">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="gcdSumRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="gcdSumResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="GcdService">
+
+      <wsdl:port binding="impl:GcdSoapBinding" name="Gcd">
+
+         <wsdlsoap:address location="http://localhost:8080/UnicoTest/services/Gcd"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
